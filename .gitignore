@@ -1,0 +1,10 @@
+# Restos de Windows / editores
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*~
+
+# Edge / Chrome
+DevToolsActivePort

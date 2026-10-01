@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capa 7 · Lo que hace por ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --abyss:#070b26;
+    --grid-cyan:#22d3ee;
+    --signal-blue:#38bdf8;
+    --neon-mint:#34d399;
+    --pulse-violet:#8b5cf6;
+    --paper:#f4f5f7;
+    --dim:#8b98b8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--abyss);
+    color:var(--paper);
+    font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  /* ---------- INICIO fullscreen ---------- */
+  #inicio{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1.2rem;
+    text-align:center;
+    padding:2rem 1rem 4rem;
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(ellipse 80% 55% at 50% 0%, #141b4d 0%, var(--abyss) 65%);
+  }
+  .kicker{
+    font-size:.8rem;
+    letter-spacing:.15em;
+    color:var(--dim);
+  }
+  h1.titulo{
+    font-family:'Press Start 2P',monospace;
+    font-size:clamp(2rem,8vw,4.2rem);
+    line-height:1.2;
+    background:linear-gradient(90deg,var(--neon-mint),var(--grid-cyan) 40%,var(--signal-blue) 70%,var(--pulse-violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 0 18px rgba(34,211,238,.45));
+  }
+  .sub{
+    max-width:38rem;
+    color:#c9d4f2;
+    font-size:clamp(.9rem,2.5vw,1.05rem);
+    line-height:1.6;
+  }
+  .sub b{color:#fff}
+  /* Pila OSI */
+  .pila{
+    display:flex;
+    flex-direction:column-reverse;
+    gap:.4rem;
+    margin:1rem 0 .4rem;
+    perspective:600px;
+  }
+  .losa{
+    min-width:min(320px,70vw);
+    padding:.45rem 1rem;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    border:1px solid rgba(56,189,248,.5);
+    background:rgba(56,189,248,.08);
+    color:#bfe6ff;
+    transform:rotateX(28deg);
+    border-radius:4px;
+    animation:pulso 3.5s infinite;
+  }
+  .losa small{display:block;font-size:.62rem;color:var(--dim);letter-spacing:.05em}
+  .losa.c7{
+    border-color:var(--pulse-violet);
+    background:rgba(139,92,246,.18);
+    color:#fff;
+    font-weight:700;
+    box-shadow:0 0 24px rgba(139,92,246,.55);
+  }
+  .losa:nth-child(1){animation-delay:0s}
+  .losa:nth-child(2){animation-delay:.4s}
+  .losa:nth-child(3){animation-delay:.8s}
+  .losa:nth-child(4){animation-delay:1.2s}
+  .losa:nth-child(5){animation-delay:1.6s}
+  .losa:nth-child(6){animation-delay:2s}
+  .losa:nth-child(7){animation-delay:2.4s}
+  @keyframes pulso{
+    0%,100%{filter:brightness(1)}
+    12%{filter:brightness(1.9)}
+  }
+  /* Boton */
+  .btn-empezar{
+    font-family:'Press Start 2P',monospace;
+    font-size:1rem;
+    color:#04121f;
+    background:linear-gradient(90deg,var(--neon-mint),var(--grid-cyan));
+    border:none;
+    border-radius:6px;
+    padding:1rem 2.2rem;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:.6rem;
+    box-shadow:0 0 26px rgba(34,211,238,.55);
+    animation:latido 1.6s infinite;
+  }
+  .btn-empezar:hover,.btn-empezar:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+    filter:brightness(1.1);
+  }
+  @keyframes latido{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.05)}
+  }
+  .blink{
+    font-family:'Press Start 2P',monospace;
+    font-size:.65rem;
+    color:var(--grid-cyan);
+    animation:blink 1.2s steps(2) infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+  /* Suelo reticula */
+  .suelo{
+    position:absolute;
+    left:-25%;right:-25%;bottom:-12%;
+    height:42%;
+    background-image:
+      linear-gradient(rgba(52,211,153,.45) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(34,211,238,.45) 1px,transparent 1px);
+    background-size:44px 44px;
+    transform:rotateX(62deg);
+    mask-image:linear-gradient(to top,black 55%,transparent);
+    -webkit-mask-image:linear-gradient(to top,black 55%,transparent);
+    pointer-events:none;
+  }
+  /* ---------- SEQUENCE ---------- */
+  #sequence{
+    background:var(--paper);
+    color:#0b1220;
+    padding:2.5rem 1rem 3rem;
+    text-align:center;
+  }
+  #sequence h2{
+    font-family:'Press Start 2P',monospace;
+    font-size:clamp(1rem,4vw,1.5rem);
+    margin-bottom:.6rem;
+  }
+  #sequence p{max-width:44rem;margin:0 auto 1rem;line-height:1.6;font-size:.95rem}
+  #sequence iframe{
+    width:min(1200px,100%);
+    height:82vh;
+    border:2px solid #0b1220;
+    border-radius:8px;
+    background:#fff;
+  }
+  #sequence a.alt{color:#0b1220;font-weight:700}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<section id="inicio" aria-label="Pantalla de inicio">
+  <div class="suelo" aria-hidden="true"></div>
+  <p class="kicker">1.º SMR · Modelo OSI</p>
+  <h1 class="titulo">CAPA 7</h1>
+  <p class="sub">La capa que <b>habla con tus programas</b>: pide las páginas, pregunta los nombres y te enseña el resultado. Pulsa empezar y lo ves paso a paso.</p>
+
+  <div class="pila" aria-label="Pila del modelo OSI con la capa 7 destacada">
+    <div class="losa">1 · FÍSICA <small>cables</small></div>
+    <div class="losa">2 · ENLACE <small>vecinos</small></div>
+    <div class="losa">3 · RED <small>direcciones</small></div>
+    <div class="losa">4 · TRANSPORTE <small>lleva los datos</small></div>
+    <div class="losa">5 · SESIÓN <small>conversación</small></div>
+    <div class="losa">6 · PRESENTACIÓN <small>lo deja legible</small></div>
+    <div class="losa c7">7 · APLICACIÓN ★ <small>habla con tu app</small></div>
+  </div>
+
+  <p class="blink" aria-hidden="true">▼ PULSA EMPEZAR ▼</p>
+  <a class="btn-empezar" href="#sequence">EMPEZAR</a>
+</section>
+
+<section id="sequence" aria-label="Diagrama sequence de la capa 7">
+  <h2>Así funciona: ejemplo de una web</h2>
+  <p>Usa el botón <b>Activa</b> del diagrama para avanzar paso a paso. El tramo 2 es lo que <b>pide la Capa 7</b>, el 3 lo que <b>nos devuelve la Capa 6</b>, el 4 lo que <b>ves tú</b>.</p>
+  <iframe title="Diagrama sequence Capa 7" src=".archify/sequence-capa7-v2-20260928-230255/capa7-que-llega-y-que-hacemos.html" loading="lazy"></iframe>
+  <p>¿No se ve dentro de la página? <a class="alt" href=".archify/sequence-capa7-v2-20260928-230255/capa7-que-llega-y-que-hacemos.html">Abrir el diagrama aparte</a></p>
+  <p><a class="alt" href="#inicio">← Volver al inicio</a></p>
+</section>
+
+</body>
+</html>
