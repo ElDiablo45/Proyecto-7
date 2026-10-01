@@ -148,6 +148,92 @@
     -webkit-mask-image:linear-gradient(to top,black 55%,transparent);
     pointer-events:none;
   }
+  /* ---------- RECUADROS (mismo diseño que inicio) ---------- */
+  .seccion-oscura{
+    background:var(--abyss);
+    color:var(--paper);
+    padding:2.5rem 1rem 3rem;
+    text-align:center;
+  }
+  .recuadro{
+    max-width:54rem;
+    margin:0 auto;
+    border:1px solid rgba(34,211,238,.55);
+    border-radius:10px;
+    background:rgba(56,189,248,.06);
+    box-shadow:0 0 28px rgba(34,211,238,.18);
+    padding:1.8rem 1.5rem;
+    text-align:left;
+  }
+  .recuadro h2{
+    font-family:'Press Start 2P',monospace;
+    font-size:clamp(.85rem,3.4vw,1.2rem);
+    line-height:1.6;
+    color:var(--grid-cyan);
+    text-align:center;
+    margin-bottom:1.2rem;
+    filter:drop-shadow(0 0 12px rgba(34,211,238,.4));
+  }
+  .recuadro .frase{
+    font-size:clamp(.95rem,2.6vw,1.1rem);
+    line-height:1.7;
+    color:#e6edff;
+    text-align:center;
+    margin-bottom:1.4rem;
+  }
+  .recuadro .frase b{color:var(--neon-mint)}
+  table.proto{
+    width:100%;
+    border-collapse:collapse;
+    font-size:clamp(.78rem,2.3vw,.92rem);
+  }
+  table.proto th{
+    font-family:'Press Start 2P',monospace;
+    font-size:.62rem;
+    letter-spacing:.08em;
+    color:var(--signal-blue);
+    text-align:left;
+    padding:.7rem .6rem;
+    border-bottom:1px solid rgba(56,189,248,.5);
+  }
+  table.proto td{
+    padding:.6rem;
+    border-bottom:1px solid rgba(139,152,184,.25);
+    line-height:1.5;
+    vertical-align:top;
+  }
+  table.proto tr:last-child td{border-bottom:none}
+  table.proto td.proto-nombre{
+    color:var(--neon-mint);
+    font-weight:700;
+    white-space:nowrap;
+  }
+  /* Recuadro destacado del ejemplo */
+  .recuadro.destacado{
+    border-color:var(--pulse-violet);
+    background:rgba(139,92,246,.1);
+    box-shadow:0 0 34px rgba(139,92,246,.4);
+  }
+  .recuadro.destacado h2{color:#c4b5fd;filter:drop-shadow(0 0 12px rgba(139,92,246,.5))}
+  .recuadro.destacado p{
+    line-height:1.8;
+    font-size:clamp(.9rem,2.5vw,1.02rem);
+    color:#e6edff;
+    text-align:center;
+  }
+  .recuadro.destacado p b{color:#fff}
+  .url-ejemplo{
+    display:inline-block;
+    margin:.8rem 0;
+    padding:.7rem 1.2rem;
+    font-weight:700;
+    font-size:clamp(.9rem,3vw,1.15rem);
+    color:#04121f;
+    background:linear-gradient(90deg,var(--neon-mint),var(--grid-cyan));
+    border-radius:6px;
+    box-shadow:0 0 22px rgba(34,211,238,.55);
+    overflow-wrap:anywhere;
+  }
   /* ---------- SEQUENCE ---------- */
   #sequence{
     background:var(--paper);
@@ -194,7 +280,36 @@
   </div>
 
   <p class="blink" aria-hidden="true">▼ PULSA EMPEZAR ▼</p>
-  <a class="btn-empezar" href="#sequence">EMPEZAR</a>
+  <a class="btn-empezar" href="#define">EMPEZAR</a>
+</section>
+
+<section id="define" class="seccion-oscura" aria-label="Qué es la capa 7 y sus protocolos">
+  <div class="recuadro">
+    <h2>QUÉ ES LA CAPA 7</h2>
+    <p class="frase">La capa 7 define cómo una aplicación <b>solicita</b>, <b>envía</b> y <b>recibe</b> información.</p>
+    <table class="proto">
+      <thead>
+        <tr><th>Protocolo</th><th>Para qué sirve</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="proto-nombre">HTTP / HTTPS</td><td>Páginas web y APIs</td></tr>
+        <tr><td class="proto-nombre">DNS</td><td>Resolver nombres como google.com a direcciones IP</td></tr>
+        <tr><td class="proto-nombre">SMTP</td><td>Envío de correo electrónico</td></tr>
+        <tr><td class="proto-nombre">IMAP / POP3</td><td>Recepción y acceso al correo</td></tr>
+        <tr><td class="proto-nombre">FTP</td><td>Transferencia de archivos</td></tr>
+        <tr><td class="proto-nombre">SSH</td><td>Acceso remoto seguro</td></tr>
+        <tr><td class="proto-nombre">DHCP</td><td>Configuración automática de red</td></tr>
+        <tr><td class="proto-nombre">SNMP</td><td>Monitorización y administración de dispositivos</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="ejemplo" class="seccion-oscura" aria-label="Ejemplo de la capa 7">
+  <div class="recuadro destacado">
+    <h2>EJEMPLO</h2>
+    <p>Por ejemplo, si escribes:<br><span class="url-ejemplo">https://www.google.com</span><br>tu navegador utiliza <b>HTTPS</b>, que pertenece a esta capa desde la perspectiva del modelo OSI.</p>
+  </div>
 </section>
 
 <section id="sequence" aria-label="Diagrama sequence de la capa 7">
